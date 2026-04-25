@@ -39,13 +39,13 @@
   --color-primary-container: #4f46e5;
   --color-background: #fcf8ff;
 
-  --font-body-md: "Inter", sans-serif;
-  --font-h2: "Manrope", sans-serif;
-  --font-h1: "Manrope", sans-serif;
-  --font-h3: "Manrope", sans-serif;
-  --font-label-sm: "Inter", sans-serif;
-  --font-numeral-xl: "Manrope", sans-serif;
-  --font-body-lg: "Inter", sans-serif;
+  --font-body-md: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-h2: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-h1: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-h3: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-label-sm: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-numeral-xl: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body-lg: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
 
   --text-body-md: 16px;
   --text-body-md--line-height: 1.5;
@@ -83,7 +83,7 @@
 }
 
 .sidebar-active-indicator {
-    box-shadow: -4px 0 0 0 #3525cd;
+    box-shadow: -4px 0 0 0 #7b2cbf;
 }
 
 .material-symbols-outlined {

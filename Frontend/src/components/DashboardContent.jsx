@@ -1,6 +1,17 @@
 import React from 'react';
 
 const DashboardContent = ({mlData, loading, error}) => {
+  const dummyData = {
+    labels: ["Day 1","Day 2","Day 3","Day 4","Day 5","Day 6","Day 7"],
+    income: [5000, 12000, 3000, 8000, 2000, 15000, 7000],
+    suggestedSavings: [210, 756, 90, 416, 40, 1200, 446]
+  };
+  const maxVal = Math.max(...dummyData.income);
+  const yMax = maxVal * 1.05; 
+  const mapToChart = (val) => 90 - (val / yMax) * 80;
+  const incomePoints = dummyData.income.map((v, i) => `${(i / 6) * 100},${mapToChart(v)}`).join(" ");
+  const savingPoints = dummyData.suggestedSavings.map((v, i) => `${(i / 6) * 100},${mapToChart(v)}`).join(" ");
+
   if(loading) {
       return (
         <main className="ml-[280px] pt-24 px-8">
@@ -26,14 +37,14 @@ const DashboardContent = ({mlData, loading, error}) => {
         <div className="bg-white p-6 rounded-2xl shadow-[0_8px_32px_rgba(79,70,225,0.08)] border border-slate-50">
           <div className="flex justify-between items-start mb-4">
             <div className="p-2 bg-indigo-50 text-indigo-600 rounded-lg">
-              <span className="material-symbols-outlined">account_balance</span>
+              <span className="material-symbols-outlined text-[#7b2cbf]">account_balance</span>
             </div>
             <span className="text-xs font-bold text-green-500 flex items-center bg-green-50 px-2 py-1 rounded-full">+12%</span>
           </div>
           <p className="text-label-sm text-slate-500 mb-1">Total Balance</p>
           <h3 className="text-h3 font-numeral-xl text-slate-900">₹8,42,000</h3>
           <div className="mt-4 h-1 w-full bg-slate-100 rounded-full overflow-hidden">
-            <div className="h-full bg-indigo-600 w-3/4 rounded-full"></div>
+            <div className="h-full bg-[#7b2cbf] w-3/4 rounded-full"></div>
           </div>
         </div>
         <div className="bg-white p-6 rounded-2xl shadow-[0_8px_32px_rgba(79,70,225,0.08)] border border-slate-50">
@@ -90,37 +101,67 @@ const DashboardContent = ({mlData, loading, error}) => {
         <div className="lg:col-span-2 bg-white p-8 rounded-2xl shadow-[0_8px_32px_rgba(79,70,225,0.08)] border border-slate-50">
           <div className="flex justify-between items-center mb-8">
             <div>
-              <h3 className="text-h3 font-h3 text-slate-900">Income vs Expenses</h3>
-              <p className="text-label-sm text-slate-500">Track your cash flow stability over the last 30 days</p>
+              <h3 className="text-h3 font-h3 text-slate-900">Saving vs Income</h3>
+              <p className="text-label-sm text-slate-500">Track your daily income and recommended savings</p>
             </div>
-            <div className="flex gap-2">
-              <button className="px-4 py-2 text-xs font-bold bg-slate-100 text-slate-600 rounded-lg">Weekly</button>
-              <button className="px-4 py-2 text-xs font-bold bg-indigo-600 text-white rounded-lg shadow-lg shadow-indigo-100">Monthly</button>
+            <div className="flex gap-2 items-center">
+              <div className="flex items-center gap-1.5 mr-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#7b2cbf]"></div><span className="text-[11px] font-bold text-slate-600">Income</span>
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 ml-2"></div><span className="text-[11px] font-bold text-slate-600">Saving</span>
+              </div>
+              <button className="px-4 py-2 text-xs font-bold bg-slate-100 text-slate-600 rounded-lg shadow-sm">Weekly</button>
             </div>
           </div>
-          <div className="relative h-[300px] w-full bg-slate-50 rounded-xl flex items-end justify-between px-4 pb-4 overflow-hidden">
-            <svg className="absolute inset-0 w-full h-full p-4" preserveAspectRatio="none" viewBox="0 0 100 100">
-              <path d="M0 80 Q 20 20, 40 50 T 80 30 T 100 60" fill="none" stroke="#4f46e5" strokeWidth="2"></path>
-              <path d="M0 90 Q 25 70, 50 85 T 100 75" fill="none" stroke="#e11d48" strokeDasharray="4" strokeWidth="1.5"></path>
-              <linearGradient id="chart-grad" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#4f46e5" stopOpacity="0.1"></stop>
-                <stop offset="100%" stopColor="#4f46e5" stopOpacity="0"></stop>
+          <div className="relative h-[300px] w-full bg-slate-50 rounded-xl overflow-hidden shadow-inner">
+            <svg className="absolute inset-0 w-full h-full p-4 pl-8 pb-8 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 100 100">
+              {/* Grid lines */}
+              <line x1="0" y1="10" x2="100" y2="10" stroke="#e2e8f0" strokeWidth="0.5" strokeDasharray="2" />
+              <line x1="0" y1="50" x2="100" y2="50" stroke="#e2e8f0" strokeWidth="0.5" strokeDasharray="2" />
+              <line x1="0" y1="90" x2="100" y2="90" stroke="#e2e8f0" strokeWidth="0.5" strokeDasharray="2" />
+
+              <polyline points={incomePoints} fill="none" stroke="#7b2cbf" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <polyline points={savingPoints} fill="none" stroke="#10b981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              
+              <linearGradient id="income-grad" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stopColor="#7b2cbf" stopOpacity="0.15"></stop>
+                <stop offset="100%" stopColor="#7b2cbf" stopOpacity="0"></stop>
               </linearGradient>
-              <path d="M0 80 Q 20 20, 40 50 T 80 30 T 100 60 L 100 100 L 0 100 Z" fill="url(#chart-grad)"></path>
+              <linearGradient id="saving-grad" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stopColor="#10b981" stopOpacity="0.2"></stop>
+                <stop offset="100%" stopColor="#10b981" stopOpacity="0"></stop>
+              </linearGradient>
+              
+              <polygon points={`0,100 ${incomePoints} 100,100`} fill="url(#income-grad)" />
+              <polygon points={`0,100 ${savingPoints} 100,100`} fill="url(#saving-grad)" />
             </svg>
-            <div className="absolute left-1/2 top-1/4 -translate-x-1/2 p-3 glass-card rounded-xl border border-indigo-100 text-center shadow-xl z-10">
-              <p className="text-[10px] font-bold text-indigo-600 uppercase">Volatility Alert</p>
-              <p className="text-xs font-bold text-slate-700">Income fluctuated 14% last week</p>
+
+            {/* Labels overlay */}
+            <div className="absolute inset-0 w-full h-full p-4 pl-8 pb-8 pointer-events-none">
+                <div className="relative w-full h-full">
+                    {/* Y-axis labels */}
+                    <div className="absolute left-[-24px] top-0 h-full flex flex-col justify-between py-[10%] text-[9px] font-bold text-slate-400">
+                        <span>₹15k</span>
+                        <span>₹7.5k</span>
+                        <span>₹0</span>
+                    </div>
+
+                    {/* X-axis labels */}
+                    {dummyData.labels.map((label, idx) => (
+                        <div key={idx} className="absolute bottom-[-20px] text-[10px] text-slate-400 font-bold -translate-x-1/2" style={{left: `${(idx / 6) * 100}%`}}>{label}</div>
+                    ))}
+                    
+                    {/* Floating Alert */}
+                    <div className="absolute left-[83.33%] top-[15%] -translate-x-1/2 p-2.5 glass-card rounded-xl border border-indigo-100/50 bg-white/70 backdrop-blur-md text-center shadow-xl z-20 w-max pointer-events-auto">
+                        <p className="text-[10px] font-black text-emerald-600 uppercase tracking-wider mb-0.5">High Potential</p>
+                        <p className="text-xs font-bold text-slate-800">₹{dummyData.suggestedSavings[5]} saving on highest income</p>
+                    </div>
+                </div>
             </div>
-            <div className="text-[10px] text-slate-400 relative z-10">Week 1</div>
-            <div className="text-[10px] text-slate-400 relative z-10">Week 2</div>
-            <div className="text-[10px] text-slate-400 relative z-10">Week 3</div>
-            <div className="text-[10px] text-slate-400 relative z-10">Week 4</div>
           </div>
         </div>
 
-        <div className="relative group h-full overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-600 to-indigo-900 p-8 shadow-2xl flex flex-col justify-between">
-          <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-repeat"></div>
+        <div className="relative group h-full overflow-hidden rounded-2xl bg-[#7b2cbf] p-8 shadow-2xl flex flex-col justify-between">
+          <div className="absolute inset-0 opacity-10 bg-[#7b2cbf] bg-repeat"></div>
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 glass-card rounded-lg text-white">
@@ -129,15 +170,15 @@ const DashboardContent = ({mlData, loading, error}) => {
               <h3 className="font-h3 text-xl text-white">Smart Savings</h3>
             </div>
             <div className="p-6 glass-card rounded-2xl mb-8">
-              <p className="text-white/70 text-xs font-medium mb-1">Recommended Saving Today</p>
+              <p className="text-black text-xs font-medium mb-1">Recommended Saving Today</p>
               <div className="flex items-baseline gap-2">
-                <span className="text-white text-3xl font-numeral-xl">₹{mlData.recommended_savings}</span>
-                <span className="text-indigo-200 text-sm font-bold">{(mlData.savings_percent * 100).toFixed(1)}%</span>
+                <span className="text-black text-3xl font-numeral-xl">₹{mlData.recommended_savings}</span>
+                <span className="text-black text-sm font-bold">{(mlData.savings_percent * 100).toFixed(1)}%</span>
               </div>
             </div>
             <p className="text-indigo-100 text-sm leading-relaxed mb-8">Based on your recent income spurt, we recommend putting aside this amount for tax and future safety net.</p>
           </div>
-          <button className="relative z-10 w-full py-4 bg-white text-indigo-600 rounded-xl font-bold tracking-tight hover:shadow-2xl transition-all active:scale-[0.98]">
+          <button className="relative z-10 w-full py-4 bg-white text-[#7b2cbf] rounded-xl font-bold tracking-tight hover:shadow-2xl transition-all active:scale-[0.98]">
             Save Now
           </button>
         </div>
@@ -148,7 +189,7 @@ const DashboardContent = ({mlData, loading, error}) => {
         <div className="lg:col-span-7 bg-white p-6 rounded-2xl shadow-[0_8px_32px_rgba(79,70,225,0.08)] border border-slate-50">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-h3 font-h3 text-slate-900">Recent Transactions</h3>
-            <button className="text-sm font-bold text-indigo-600 hover:underline">View All</button>
+            <button className="text-sm font-bold text-[#7b2cbf] hover:underline">View All</button>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -250,25 +291,6 @@ const DashboardContent = ({mlData, loading, error}) => {
               </div>
             </div>
           </div>
-          <div className="bg-indigo-50/50 p-6 rounded-2xl border border-indigo-100">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-sm font-bold text-indigo-900 uppercase tracking-tight">Europe Trip Goal</h3>
-              <span className="text-xs font-bold text-indigo-600">₹2,40,000 / ₹5,00,000</span>
-            </div>
-            <div className="h-4 w-full bg-white rounded-full overflow-hidden shadow-inner p-0.5">
-              <div className="h-full bg-gradient-to-r from-indigo-400 to-indigo-600 rounded-full w-[48%] shadow-sm"></div>
-            </div>
-            <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
-              <button className="flex-shrink-0 flex items-center gap-2 bg-white px-4 py-2 rounded-xl text-xs font-bold text-slate-700 shadow-sm">
-                <span className="material-symbols-outlined text-sm">add</span>
-                Add Funds
-              </button>
-              <button className="flex-shrink-0 flex items-center gap-2 bg-white px-4 py-2 rounded-xl text-xs font-bold text-slate-700 shadow-sm">
-                <span className="material-symbols-outlined text-sm">settings_suggest</span>
-                Auto-Save
-              </button>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -290,12 +312,12 @@ const DashboardContent = ({mlData, loading, error}) => {
                 <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-[10px] font-bold uppercase tracking-wide">Feedback Loop Active</span>
               </div>
               <p className="text-sm text-slate-600 leading-relaxed max-w-2xl">
-                "You saved <strong>80%</strong> of your suggested amount last week. Exceptional consistency! Keep it up for 3 more days to earn the <span className="text-indigo-600 font-semibold">'Streak'</span> badge and reach your emergency fund goal 2 months early."
+                "You saved <strong>80%</strong> of your suggested amount last week. Exceptional consistency! Keep it up for 3 more days to earn the <span className="text-[#7b2cbf] font-semibold">'Streak'</span> badge and reach your emergency fund goal 2 months early."
               </p>
             </div>
           </div>
           <div className="shrink-0 flex gap-3">
-            <button className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 transition-colors text-white text-sm font-bold rounded-xl shadow-lg shadow-indigo-200">
+            <button className="px-5 py-2.5 bg-[#7b2cbf] hover:bg-indigo-700 transition-colors text-white text-sm font-bold rounded-xl shadow-lg shadow-indigo-200">
               View Trajectory
             </button>
           </div>

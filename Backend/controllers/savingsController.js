@@ -6,14 +6,14 @@ const { BASE_FACTOR } = require('../config/constants');
 
 exports.suggestSavings = async (req, res) => {
     try {
-        const { userId, income } = req.body;
+        const { userId, income, curr_balance } = req.body;
 
         if (!userId || typeof income !== 'number' || income < 0) {
             return res.status(400).json({ error: "Invalid userId or income." });
         }
 
         // Fetch user context
-        const currentBalance = await db.getUserBalance(userId);
+        const currentBalance = curr_balance !== undefined ? curr_balance : await db.getUserBalance(userId);
         const incomeHistory = await db.getIncomeHistory(userId, 30);
 
         // Get ML prediction

@@ -1,0 +1,5 @@
+# Large ML data
+Backend/ML model/*.csv
+
+# Videos
+Frontend/src/assets/*.mp4
