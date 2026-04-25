@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - GigSaver</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f9f9ff;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#ffdad6",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#f9f9ff",
+                      "surface": "#f9f9ff",
+                      "on-primary-fixed": "#0f0069",
+                      "on-error-container": "#93000a",
+                      "secondary-container": "#8a4cfc",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#c3c6d2",
+                      "on-surface": "#111c2d",
+                      "on-secondary-container": "#fffbff",
+                      "on-tertiary-fixed": "#181b24",
+                      "secondary-fixed-dim": "#d2bbff",
+                      "tertiary": "#454853",
+                      "surface-container-high": "#dee8ff",
+                      "on-surface-variant": "#464555",
+                      "on-tertiary-container": "#d9dbe8",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#dad7ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#4d44e3",
+                      "inverse-on-surface": "#ecf1ff",
+                      "surface-container": "#e7eeff",
+                      "on-secondary-fixed": "#25005a",
+                      "outline": "#777587",
+                      "surface-variant": "#d8e3fb",
+                      "secondary": "#712ae2",
+                      "background": "#f9f9ff",
+                      "surface-container-low": "#f0f3ff",
+                      "on-tertiary-fixed-variant": "#434751",
+                      "tertiary-container": "#5d606b",
+                      "surface-dim": "#cfdaf2",
+                      "primary-container": "#4f46e5",
+                      "on-background": "#111c2d",
+                      "tertiary-fixed": "#e0e2ef",
+                      "secondary-fixed": "#eaddff",
+                      "error": "#ba1a1a",
+                      "surface-container-highest": "#d8e3fb",
+                      "primary-fixed": "#e2dfff",
+                      "inverse-surface": "#263143",
+                      "outline-variant": "#c7c4d8",
+                      "on-primary-fixed-variant": "#3323cc",
+                      "inverse-primary": "#c3c0ff",
+                      "primary-fixed-dim": "#c3c0ff",
+                      "primary": "#3525cd",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#5a00c6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "container-padding": "24px",
+                      "lg": "32px",
+                      "xs": "4px",
+                      "gutter": "24px",
+                      "md": "24px",
+                      "base": "8px",
+                      "xl": "48px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Manrope"],
+                      "headline-md": ["Manrope"],
+                      "label-caps": ["Manrope"],
+                      "body-md": ["Manrope"],
+                      "title-sm": ["Manrope"],
+                      "display-lg": ["Manrope"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "title-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "display-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-slate-200 bg-white dark:bg-slate-950 flex flex-col py-6 z-50">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div>
+<h1 class="text-lg font-black text-indigo-600">GigSaver</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Fintech for Freelancers</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard -->
+<div class="cursor-pointer flex items-center gap-3 px-6 py-3 text-slate-500 hover:bg-slate-50 transition-all font-manrope text-sm font-medium">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</div>
+<!-- Savings -->
+<div class="cursor-pointer flex items-center gap-3 px-6 py-3 text-slate-500 hover:bg-slate-50 transition-all font-manrope text-sm font-medium">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Savings</span>
+</div>
+<!-- Expenses -->
+<div class="cursor-pointer flex items-center gap-3 px-6 py-3 text-slate-500 hover:bg-slate-50 transition-all font-manrope text-sm font-medium">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span>Expenses</span>
+</div>
+<!-- Taxes -->
+<div class="cursor-pointer flex items-center gap-3 px-6 py-3 text-slate-500 hover:bg-slate-50 transition-all font-manrope text-sm font-medium">
+<span class="material-symbols-outlined" data-icon="percent">percent</span>
+<span>Taxes</span>
+</div>
+<!-- Settings (Active) -->
+<div class="cursor-pointer flex items-center gap-3 px-6 py-3 bg-indigo-50 text-indigo-700 border-l-4 border-indigo-600 font-manrope text-sm font-medium">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>Settings</span>
+</div>
+</nav>
+<div class="px-6 mt-auto space-y-4">
+<div class="bg-indigo-600 p-4 rounded-xl text-white">
+<p class="text-xs font-bold mb-1">Upgrade Pro</p>
+<p class="text-[10px] opacity-80 mb-3">Get advanced tax insights and unlimited sub-accounts.</p>
+<button class="w-full py-2 bg-white text-indigo-600 rounded-lg text-xs font-bold hover:bg-indigo-50 transition-colors">Upgrade Now</button>
+</div>
+<div class="pt-4 border-t border-slate-100">
+<div class="flex items-center gap-3 px-2 py-2 text-slate-500 hover:text-indigo-600 cursor-pointer text-sm font-medium transition-colors">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span>Help Center</span>
+</div>
+<div class="flex items-center gap-3 px-2 py-2 text-error hover:text-red-700 cursor-pointer text-sm font-medium transition-colors">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200 flex justify-between items-center h-16 px-8 w-full shadow-sm">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md text-indigo-600">Settings</h2>
+<div class="h-6 w-[1px] bg-slate-200"></div>
+<div class="flex items-center gap-2 text-slate-500 text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="home">home</span>
+<span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+<span>User Preferences</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined text-slate-500 hover:text-indigo-600 cursor-pointer" data-icon="notifications">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-slate-500 hover:text-indigo-600 cursor-pointer" data-icon="help">help</span>
+<div class="flex items-center gap-3 pl-4 border-l border-slate-200">
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface leading-none">Alex Rivera</p>
+<p class="text-[10px] text-slate-400 font-medium">Independent Consultant</p>
+</div>
+<img alt="User profile" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="Close up portrait of a young professional man with dark hair smiling slightly, clean studio lighting, corporate headshot style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR-e2uATJId6gj34HaPkSZHYEbRKiYkt--IKLKuTdasuwl6crZnDe_1cHgEgLjiI0_C1TeAMYakyhtHzdmMp4WPm4h2NneMJLpRfe7ulvq-q-1uVy6_bONnMAIf0v8aCbCYUb97tMYXv8u0locAX04lEpGa_lKsRZrVK2Gw4-fAXuL7lr6Il0VZxIQm_isDgdmcBe-Yam3D2qFXijc6qQFcluVQVvrY94wRw_hKlruYtCmqlELYk2nbUxkcZi9099hRUZalf35iw"/>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-6xl mx-auto">
+<div class="grid grid-cols-12 gap-8">
+<!-- Profile Section -->
+<section class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgba(79,70,229,0.06)] p-6 border border-slate-100">
+<div class="flex flex-col items-center text-center">
+<div class="relative group">
+<img alt="Profile Large" class="w-32 h-32 rounded-full border-4 border-indigo-50 object-cover mb-4" data-alt="Headshot of a man in his 30s with short hair, wearing a white shirt, professional lighting, soft blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU1zchY9JV7jLK3de5dQqCq0a0WflbqD84GhfXSaCBhqaCvSiBJBz6RGu1UFCfaLqFEbLzUKJZqJfi1ZypDqC1Gg1mDQS35TwB6LVZdGtjMznVzK72JU8Aza44j0-I-pJ6ti9VrdDYyLhtFSKka2LQqfBAtNv8w0QOFtuKJGW4FuktP5ogLKPU10p6esYghweTvd5VviOpEBDyGgPOKxn5_y_n_So24UHFW4suOyTBOWSYC0ccI9Fy-m_Ln7G_ThXn98m9dOGzdQ"/>
+<button class="absolute bottom-4 right-0 bg-primary text-white p-2 rounded-full shadow-lg hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface">Alex Rivera</h3>
+<p class="text-body-sm text-slate-500">alex.rivera@freelance.co</p>
+<div class="mt-6 w-full pt-6 border-t border-slate-50 space-y-4">
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-400 font-medium">Role</span>
+<span class="text-on-surface font-bold">Independent Consultant</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-400 font-medium">Member Since</span>
+<span class="text-on-surface font-bold">Oct 2022</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-400 font-medium">Plan</span>
+<span class="px-2 py-1 bg-indigo-50 text-indigo-600 rounded text-[10px] font-bold uppercase tracking-wider">Free Tier</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-indigo-900 rounded-xl p-6 text-white overflow-hidden relative">
+<div class="relative z-10">
+<h4 class="font-title-sm text-title-sm mb-2">Platform Integrations</h4>
+<p class="text-indigo-100 text-sm mb-4 leading-relaxed opacity-80"><div class="flex gap-3 mb-4">
+<div class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center font-black text-[10px] tracking-tight">FI</div>
+<div class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center font-black text-[10px] tracking-tight">UP</div>
+<div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">add</span>
+</div>
+</div>
+Connect your professional accounts from Fiverr, Upwork, and others to sync your earnings automatically.</p>
+<button class="flex items-center gap-2 bg-white text-indigo-900 px-4 py-2 rounded-lg font-bold text-sm hover:bg-indigo-50 transition-colors"><span class="material-symbols-outlined text-sm" data-icon="settings_input_component">settings_input_component</span>
+Manage Integrations</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-9xl opacity-10 pointer-events-none" data-icon="account_balance">account_balance</span>
+</div>
+</section>
+<!-- Settings Grid -->
+<section class="col-span-12 lg:col-span-8 space-y-6">
+<!-- Account Preferences -->
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgba(79,70,229,0.06)] border border-slate-100 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-50 bg-slate-50/50">
+<h3 class="font-title-sm text-title-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-indigo-600" data-icon="tune">tune</span>
+                                Account Preferences
+                            </h3>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-label-caps text-slate-500">Base Currency</label>
+<div class="relative">
+<select class="w-full bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none appearance-none">
+<option>USD - US Dollar</option>
+<option>EUR - Euro</option>
+<option>GBP - British Pound</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2 text-slate-400 pointer-events-none" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-label-caps text-slate-500">Language</label>
+<div class="relative">
+<select class="w-full bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none appearance-none">
+<option>English (US)</option>
+<option>Spanish</option>
+<option>French</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2 text-slate-400 pointer-events-none" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</div>
+</div>
+<div class="col-span-full space-y-2">
+<label class="text-label-caps text-slate-500">Timezone</label>
+<div class="relative">
+<select class="w-full bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none appearance-none">
+<option>(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+<option>(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+<option>(GMT+00:00) UTC</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2 text-slate-400 pointer-events-none" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Notification Settings -->
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgba(79,70,229,0.06)] border border-slate-100 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-50 bg-slate-50/50">
+<h3 class="font-title-sm text-title-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-indigo-600" data-icon="notifications_active">notifications_active</span>
+                                Notification Settings
+                            </h3>
+</div>
+<div class="p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">Email Notifications</p>
+<p class="text-body-sm text-slate-500">Receive weekly summaries and tax deadline alerts.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined" data-icon="smartphone">smartphone</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">Push Notifications</p>
+<p class="text-body-sm text-slate-500">Real-time alerts for large expenses and earnings.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Security -->
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgba(79,70,229,0.06)] border border-slate-100 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-50 bg-slate-50/50">
+<h3 class="font-title-sm text-title-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-indigo-600" data-icon="security">security</span>
+                                Security
+                            </h3>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex items-center justify-between p-4 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors cursor-pointer group">
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-slate-400" data-icon="lock">lock</span>
+<div>
+<p class="text-sm font-bold text-on-surface">Change Password</p>
+<p class="text-xs text-slate-500">Last changed 3 months ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-indigo-600 transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center justify-end gap-4 pt-4">
+<button class="px-6 py-2.5 text-sm font-bold text-slate-500 hover:text-indigo-600 transition-colors">Discard Changes</button>
+<button class="px-8 py-2.5 bg-indigo-600 text-white rounded-lg text-sm font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all active:scale-95">Save All Settings</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+</body></html>
